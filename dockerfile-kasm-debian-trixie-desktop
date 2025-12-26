@@ -6,6 +6,10 @@ USER root
 
 ENV HOME /home/kasm-default-profile
 ENV STARTUPDIR /dockerstartup
+ENV \
+    LANG='zh_CN.UTF-8' \
+    LANGUAGE='zh.CN:zh' \
+    LC_ALL='zh_CN.UTF-8' 
 WORKDIR $HOME
 
 ### Envrionment config
@@ -43,8 +47,13 @@ RUN \
   chown -R 1000:0 /home/kasm-user && \
   rm -Rf ${INST_DIR}
 
+RUN apt-get install poppler-utils ttf-mscorefonts-installer msttcorefonts fonts-crosextra-caladea fonts-crosextra-carlito gsfonts lcdf-typetools xfce4-taskmanager jq -y
+
+RUN cd /tmp && curl -o rustdesk.deb -fsSL "https://github.com/rustdesk/rustdesk/releases/download/1.4.4/rustdesk-1.4.4-x86_64.deb"  && apt-get install --no-install-recommends -y ./rustdesk.deb && rm -f rustdesk.deb && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/debconf/* /var/log/* /tmp/* /var/tmp/*
+
 # Userspace Runtime
-ENV HOME /home/kasm-user
+ENV HOME /home/kasm-user 
 WORKDIR $HOME
 USER 1000
 
