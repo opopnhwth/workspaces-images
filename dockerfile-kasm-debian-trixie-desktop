@@ -9,7 +9,8 @@ ENV STARTUPDIR /dockerstartup
 ENV \
     LANG='zh_CN.UTF-8' \
     LANGUAGE='zh.CN:zh' \
-    LC_ALL='zh_CN.UTF-8' 
+    LC_ALL='zh_CN.UTF-8' \
+    TZ='Asia/Shanghai'
 WORKDIR $HOME
 
 ### Envrionment config
@@ -51,6 +52,9 @@ RUN apt-get install poppler-utils ttf-mscorefonts-installer msttcorefonts fonts-
 
 RUN cd /tmp && curl -o rustdesk.deb -fsSL "https://github.com/rustdesk/rustdesk/releases/download/1.4.4/rustdesk-1.4.4-x86_64.deb"  && apt-get install --no-install-recommends -y ./rustdesk.deb && rm -f rustdesk.deb && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/debconf/* /var/log/* /tmp/* /var/tmp/*
+
+RUN echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
+RUN locale-gen
 
 # Userspace Runtime
 ENV HOME /home/kasm-user 
