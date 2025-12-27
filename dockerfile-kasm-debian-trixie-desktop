@@ -51,14 +51,18 @@ RUN \
 RUN apt-get update
 
 RUN apt-get -y --no-install-recommends install poppler-utils fonts-crosextra-caladea fonts-crosextra-carlito nautilus file-roller \
-    gsfonts lcdf-typetools xfce4-taskmanager jq gfortran p7zip-full yaru-theme-gtk numix-gtk-theme zsh gnome-terminal \
+    gsfonts lcdf-typetools xfce4-taskmanager jq gfortran p7zip-full yaru-theme-gtk numix-gtk-theme zsh \
     blackbird-gtk-theme darkmint-gtk-theme orchis-gtk-theme yaru-theme-icon xfwm4-theme-breeze suru-icon-theme xcursor-themes
 RUN apt-get -y --no-install-recommends install xfce4-appmenu-plugin xfce4-datetime-plugin xfce4-fsguard-plugin \
     xfce4-smartbookmark-plugin xfce4-genmon-plugin xfce4-netload-plugin xfce4-systemload-plugin xfce4-whiskermenu-plugin \
     xfce4-clipman xfce4-goodies xfce4-notes xfce4-time-out-plugin xfce4-windowck-plugin xfce4-clipman-plugin xfce4-diskperf-plugin  \
     xfce4-indicator-plugin xfce4-notes-plugin xfce4-screensaver xfce4-timer-plugin xfce4-xkb-plugin xfce4-cpufreq-plugin \
-    xfce4-docklike-plugin xfce4-panel-profiles xfce4-screenshooter xfce4-verve-plugin xfce4-cpugraph-plugin xfce4-eyes-plugin      xfce4-mount-plugin      xfce4-places-plugin   xfce4-sensors-plugin       
-RUN apt-get -y --no-install-recommends install fcitx5 fcitx5-pinyin
+    xfce4-docklike-plugin xfce4-panel-profiles xfce4-screenshooter xfce4-verve-plugin xfce4-cpugraph-plugin xfce4-eyes-plugin \
+    xfce4-mount-plugin xfce4-places-plugin xfce4-sensors-plugin
+
+RUN apt-get -y --no-install-recommends install fcitx5 fcitx5-pinyin deepin-album deepin-calculator deepin-image-viewer \
+    deepin-icon-theme deepin-terminal
+
 
 RUN cd /tmp && curl -o rustdesk.deb -fsSL "https://github.com/rustdesk/rustdesk/releases/download/1.4.4/rustdesk-1.4.4-x86_64.deb"  && apt-get install --no-install-recommends -y ./rustdesk.deb && rm -f rustdesk.deb && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/debconf/* /var/log/* /tmp/* /var/tmp/*
