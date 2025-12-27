@@ -51,7 +51,7 @@ RUN \
 RUN apt-get update
 
 RUN apt-get -y --no-install-recommends install poppler-utils fonts-crosextra-caladea fonts-crosextra-carlito nautilus file-roller \
-    gsfonts lcdf-typetools xfce4-taskmanager jq gfortran p7zip-full yaru-theme-gtk numix-gtk-theme zsh \
+    gsfonts lcdf-typetools xfce4-taskmanager jq gfortran p7zip-full yaru-theme-gtk numix-gtk-theme zsh gnome-terminal \
     blackbird-gtk-theme darkmint-gtk-theme orchis-gtk-theme yaru-theme-icon xfwm4-theme-breeze suru-icon-theme xcursor-themes
 RUN apt-get -y --no-install-recommends install xfce4-appmenu-plugin xfce4-datetime-plugin xfce4-fsguard-plugin \
     xfce4-smartbookmark-plugin xfce4-genmon-plugin xfce4-netload-plugin xfce4-systemload-plugin xfce4-whiskermenu-plugin \
